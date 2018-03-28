@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML Drag and Drop</title>
+		<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-sarif;
+		}
+		.drop-target {
+			float: left;
+			width: 200px;
+			height: 200px;
+			border: 3px solid orange;
+			margin: 25px;
+			padding: 25px;
+			border-radius: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Drag and Drop Example</h1>
+		</header>
+		<section>
+			<div class="drop-target" id="target1" ondragover="allowDrop(event);" ondrop="drop(event);">
+				<img src="assets/bristleback-dota-2.jpg" width="200px" height="200px" id="draggable1" draggable="true" ondragstart="drag(event);">
+			</div>
+			<div class="drop-target" id="target2" ondragover="allowDrop(event);" ondrop="drop(event);">
+			</div>
+		</section>
+	</body>
+	<script type="text/javascript">
+		function drag(e) {
+			e.dataTransfer.setData("text", e.target.id);
+		}
+		function allowDrop(e) {
+			e.preventDefault();
+		}
+		function drop(e) {
+			e.preventDefault();
+			var data = e.dataTransfer.getData("text");
+			e.target.appendChild(document.getElementById(data));
+		}
+	</script>
+</html>

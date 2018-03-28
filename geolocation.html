@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTML Geolocation</title>
+		<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: Arial, Helvetica, sans-sarif;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Geolocation Example</h1>
+		</header>
+		<section>
+			<h2>Click on Get Location button to know your location. Geo-location needs to be enabled</h2>
+			<button onclick="getLocation();">Get Location</button>
+			<p id="output"></p>
+		</section>
+	</body>
+	<script type="text/javascript">
+		var output = document.getElementById("output");
+		function getLocation() {
+			if(navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				output.innerHTML = "Geolocation not supported";
+			}
+		}
+		function showPosition(position) {
+				output.innerHTML = "Your Coordinates are <br>"+ position.coords.latitude +"<br>"+ position.coords.longitude;
+		}
+	</script>
+</html>
